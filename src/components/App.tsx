@@ -1,14 +1,19 @@
-import * as React from "react";
+import React from "react";
+import Welcome from "./Welcome";
+import styled from "styled-components";
 
-//first any represents props, second state
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <div style={{ fontSize: "40px" }}>Typescript Setup</div>
-      </div>
-    );
+const Wrap = styled.div`
+  body {
+    margin: 0;
   }
-}
+`;
+
+const App = () => {
+  return (
+    <Wrap>
+      <Welcome />
+    </Wrap>
+  );
+};
 
 export default App;

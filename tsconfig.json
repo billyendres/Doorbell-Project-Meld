@@ -2,7 +2,8 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "./build/",
     "preserveConstEnums": true,
