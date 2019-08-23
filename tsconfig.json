@@ -11,5 +11,6 @@
     "sourceMap": true,
     "target": "es6"
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "files": ["externals.d.ts"]
 }
