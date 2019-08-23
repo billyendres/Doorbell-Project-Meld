@@ -2,7 +2,8 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "./build/",
     "preserveConstEnums": true,
@@ -10,5 +11,6 @@
     "sourceMap": true,
     "target": "es6"
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "files": ["externals.d.ts"]
 }
