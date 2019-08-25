@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ModalPopup from "../Modal";
 import styled from "styled-components";
 
 const Keypad = () => {
@@ -21,11 +22,17 @@ const Keypad = () => {
 		codeOne[0][1] && codeTwo[0][1] && codeThree[0][1] && codeFour[0][1];
 
 	//If password is correct (password state changes to true) unlock door
-	if (code === true) return <h1>Unlocked</h1>;
+	if (code === true)
+		return (
+			<>
+				<ModalPopup />
+				<Keypad />
+			</>
+		);
 
 	console.log(clickCounter);
 
-	//If password is > 4 clicks, incorrect pin notification displayed
+	// If password is > 4 clicks, incorrect pin notification displayed
 	if (clickCounter >= 4) return <h1>Wrong Pin</h1>;
 
 	return (
