@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ModalPopup from "react-modal";
-import { mdiLockOpenOutline } from "@mdi/js";
 import Icon from "@mdi/react";
+import { mdiMusicNoteOutline } from "@mdi/js";
 
-const Modal = () => {
+const DoorbellModal = () => {
   const [modalOpen, setModalOpen] = useState(true);
   const [showLoading, setShowLoading] = useState(true);
 
@@ -25,14 +25,17 @@ const Modal = () => {
         contentLabel="Modal"
       >
         <Icon
-          path={mdiLockOpenOutline}
+          path={mdiMusicNoteOutline}
           size={3}
           color="#003c8f"
           style={{ fontSize: "2rem" }}
         />
         <p />
-        Door Unlocked
-        <p style={{ fontSize: "1rem" }}>Come on in!</p>
+        Ding!
+        <p style={{ fontSize: "1rem" }}>
+          The doorbell has rung <br />
+          someone will be with your shortly.
+        </p>
       </ModalPopup>
     )
   );
@@ -53,4 +56,4 @@ const customStyles = {
   }
 };
 
-export default Modal;
+export default DoorbellModal;
