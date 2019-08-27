@@ -10,7 +10,7 @@ const PinDisplay: React.FC<Props> = ({ pin }) => {
   return (
     <>
       {range(4).map(d => (
-        <Digit key={d}>{pin.length > d ? <i>*</i> : ""}</Digit>
+        <Digit key={d}>{pin.length > d ? <i>*</i> : <Icon />}</Digit>
       ))}
     </>
   );
@@ -22,10 +22,11 @@ const Digit = styled.div`
   text-align: center;
   font-size: 4rem;
   position: relative;
-  color: #003c8f;
+  color: white;
+  margin: 1rem;
 
-  /* :after {
-    background: #003c8f;
+  :after {
+    background: white;
     border-radius: 0.125rem;
     bottom: 0;
     content: "";
@@ -33,9 +34,31 @@ const Digit = styled.div`
     left: 0;
     position: absolute;
     width: 100%;
-  } */
+  }
+`;
+
+const Icon = styled.div`
+  text-align: center;
+  font-size: 4rem;
+  position: relative;
+  color: white;
+  margin-top: 4.7rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  :after {
+    background: white;
+    border-radius: 0.125rem;
+    bottom: 0;
+    content: "";
+    height: 0.25rem;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
 
   :empty {
-    opacity: 0.5;
+    opacity: 0.1;
   }
 `;

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalPopup from "../Modal";
 import styled from "styled-components";
 import PinDisplay from "../PinDisplay";
-
 import { range } from "../../helpers/helpers";
 
 interface Props {
@@ -12,10 +11,12 @@ interface Props {
 
 const Keypad: React.FC<Props> = ({ onChange, value }) => {
   const [pin, setPin] = useState("");
+
   const addDigit = (digit: number) => {
     onChange(`${value}${digit}`);
   };
 
+  console.log(value);
   console.log(pin);
 
   return (
@@ -32,7 +33,6 @@ const Keypad: React.FC<Props> = ({ onChange, value }) => {
             {digit}
           </Keys>
         ))}
-        {/* <h1>{pin}</h1> */}
         <PinDisplay pin={pin} />
       </Container>
     </>
@@ -49,7 +49,8 @@ const Keys = styled.button`
   width: 5rem;
   height: 5rem;
   border-radius: 0.5rem;
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
   margin-top: 0.5rem;
 `;
 

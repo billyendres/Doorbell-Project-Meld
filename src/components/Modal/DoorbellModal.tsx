@@ -19,10 +19,10 @@ const DoorbellModal = () => {
     showLoading && (
       <ModalPopup
         isOpen={modalOpen}
-        // onAfterOpen={() => setModalOpen(true)}
         onRequestClose={() => setModalOpen(false)}
         style={customStyles}
         contentLabel="Modal"
+        ariaHideApp={false}
       >
         <Icon
           path={mdiMusicNoteOutline}

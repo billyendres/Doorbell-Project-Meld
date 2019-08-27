@@ -19,7 +19,7 @@ const Welcome = () => {
     if (newCode === "1234") {
       setCode("1234");
     } else if (newCode.length >= 4) {
-      setCodeError("Invalid pin, try again");
+      setCodeError("Invalid pin, try again.");
       setTimeout(() => {
         setCodeError("");
         setCode("");
@@ -50,10 +50,8 @@ const Welcome = () => {
   if (codeError) {
     return (
       <>
-        <h1>
-          Incorrect code entered. <br /> Try again
-        </h1>
         <Welcome />
+        <IncorrectCode>{codeError}</IncorrectCode>
       </>
     );
   }
@@ -84,7 +82,6 @@ const Welcome = () => {
           </Doorbell>
         </Header>
         <Keypad onChange={onChangeCode} value={code} />
-        {/* <PinDisplay pin={code} /> */}
       </Background>
     </>
   );
@@ -118,4 +115,15 @@ const Doorbell = styled.button`
   padding: 1rem;
   color: #003c8f;
   font-family: "Varela Round", sans-serif;
+`;
+
+const IncorrectCode = styled.div`
+  font-size: 1.5rem;
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  text-align: center;
+  margin-top: 1rem;
+  position: absolute;
+  margin-left: 71%;
+  margin-top: 35%;
 `;
