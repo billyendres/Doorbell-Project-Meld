@@ -15,6 +15,7 @@
     "@mdi/js": "^4.1.95",
     "@mdi/react": "^1.2.1",
     "@types/react-modal": "^3.8.2",
+    "mdi-react": "^5.5.0",
     "react": "^16.9.0",
     "react-cosmos": "^5.0.0-alpha.25",
     "react-dom": "^16.9.0",

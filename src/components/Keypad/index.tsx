@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ModalPopup from "../Modal";
 import styled from "styled-components";
-import PinDisplay from "../PinDisplay";
 import { range } from "../../helpers/helpers";
 
 interface Props {
@@ -16,8 +14,7 @@ const Keypad: React.FC<Props> = ({ onChange, value }) => {
     onChange(`${value}${digit}`);
   };
 
-  console.log(value);
-  console.log(pin);
+  // console.log(pin);
 
   return (
     <>
@@ -33,7 +30,6 @@ const Keypad: React.FC<Props> = ({ onChange, value }) => {
             {digit}
           </Keys>
         ))}
-        <PinDisplay pin={pin} />
       </Container>
     </>
   );
@@ -43,22 +39,36 @@ export default Keypad;
 
 const Keys = styled.button`
   color: #003c8f;
+  outline: none;
+  box-shadow: 0 2px 5px 0 #1565c0;
+  cursor: pointer;
   font-size: 2.25rem;
   font-family: "Varela Round", sans-serif;
   text-align: center;
-  width: 5rem;
-  height: 5rem;
   border-radius: 0.5rem;
-  margin-right: 0.25rem;
-  margin-left: 0.25rem;
-  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  justify-content: center;
+  :after {
+    content: "";
+    padding-bottom: 100%;
+    display: block;
+    width: 0;
+  }
+  :active {
+    background: #003c8f;
+    color: white;
+    position: relative;
+    top: 1px;
+    box-shadow: none;
+  }
 `;
 
 const Container = styled.div`
-  height: 17rem;
-  width: 17rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 15%;
+  display: grid;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
