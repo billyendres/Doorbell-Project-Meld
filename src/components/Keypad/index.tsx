@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { range } from "../../helpers/helpers";
 
@@ -43,7 +43,6 @@ const Keys = styled.button`
   box-shadow: 0 2px 5px 0 #1565c0;
   cursor: pointer;
   font-size: 2.25rem;
-  font-family: "Varela Round", sans-serif;
   text-align: center;
   border-radius: 0.5rem;
   display: flex;

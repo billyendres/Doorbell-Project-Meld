@@ -13,5 +13,4 @@ export default styled.div`
   top: 0;
   left: 0;
   margin: 0;
-  font-family: "Varela Round, sans-serif";
 `;

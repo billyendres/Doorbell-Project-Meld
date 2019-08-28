@@ -6,6 +6,7 @@ import { mdiBellRingOutline } from "@mdi/js";
 import Modal from "../Modal";
 import PinDisplay from "../PinDisplay";
 import { mdiMusicNoteOutline } from "@mdi/js";
+import { mdiLockOpenOutline } from "@mdi/js";
 
 const Welcome = () => {
   const [ring, setRing] = useState(false);
@@ -42,6 +43,12 @@ const Welcome = () => {
     }
   };
 
+  // const element = (
+  //   <p style={{ fontSize: "1.5rem", fontFamily: "Varela Round" }}>
+  //     Come on in.
+  //   </p>
+  // );
+
   return (
     <>
       <Wrap>
@@ -49,17 +56,16 @@ const Welcome = () => {
           {code === "1234" && (
             <Modal>
               <Icon
-                path={mdiMusicNoteOutline}
+                path={mdiLockOpenOutline}
                 size={4}
                 color="white"
                 style={{ fontSize: "2rem", opacity: 0.5, marginTop: "15%" }}
               />
               <p style={{ fontFamily: "Varela Round", fontSize: "3rem" }}>
-                Ding!
+                Door Unlocked
               </p>
               <p style={{ fontSize: "1.5rem", fontFamily: "Varela Round" }}>
-                The doorbell has rung <br />
-                someone will be with your shortly.
+                Come on in.
               </p>
             </Modal>
           )}
@@ -76,7 +82,7 @@ const Welcome = () => {
               </p>
               <p style={{ fontSize: "1.5rem", fontFamily: "Varela Round" }}>
                 The doorbell has rung <br />
-                someone will be with your shortly.
+                Someone will be with your shortly.
               </p>
             </Modal>
           )}
@@ -130,7 +136,6 @@ export default Welcome;
 
 const Header = styled.h1`
   font-size: 3.125rem;
-  font-family: "Varela Round", sans-serif;
   color: #003c8f;
   padding-top: 12%;
 `;
@@ -142,9 +147,9 @@ const Button = styled.button`
   cursor: pointer;
   border: 0.25rem solid currentColor;
   border-radius: 1.25rem;
-  font-family: "Varela Round", sans-serif;
   text-transform: uppercase;
   padding: 1rem 1.5em;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const Doorbell = styled(Button)`
@@ -161,10 +166,10 @@ const Doorbell = styled(Button)`
 const CodeMessage = styled.div`
   font-size: 1.125rem;
   color: inherit;
-  margin: 1.75rem 0;
-  font-family: "Varela Round", sans-serif;
+  margin: 1.75rem 0 0;
   text-align: center;
   text-align: center;
+  min-height: 3rem;
 `;
 
 const Wrap = styled.div`
@@ -176,12 +181,10 @@ const Content = styled.div`
 `;
 
 const Sidebar = styled.div`
-  width: 260px;
+  width: ${260 / 16}rem;
   text-align: center;
   margin-left: 12.5rem;
   color: white;
-  justify-content: center;
-  display: flex;
   flex-direction: column;
 `;
 
@@ -192,6 +195,8 @@ const Clear = styled(Button)`
   height: 3.5rem;
   color: white;
   align-self: center;
+  box-sizing: border-box;
+  margin: 0 auto;
   flex: 0;
   :disabled {
     opacity: 0.5;

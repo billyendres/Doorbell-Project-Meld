@@ -8,6 +8,10 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
     filename: "bundle.js"
   },
+  devServer: {
+    compress: true,
+    host: "0.0.0.0"
+  },
   module: {
     rules: [
       {
