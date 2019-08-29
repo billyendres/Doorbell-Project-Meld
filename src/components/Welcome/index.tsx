@@ -3,7 +3,6 @@ import Keypad from "../Keypad";
 import styled from "styled-components";
 import Icon from "@mdi/react";
 import { mdiBellRingOutline } from "@mdi/js";
-import Modal from "../Modal";
 import PinDisplay from "../PinDisplay";
 import { mdiMusicNoteOutline } from "@mdi/js";
 import { mdiLockOpenOutline } from "@mdi/js";
@@ -43,12 +42,6 @@ const Welcome = () => {
     }
   };
 
-  // const element = (
-  //   <p style={{ fontSize: "1.5rem", fontFamily: "Varela Round" }}>
-  //     Come on in.
-  //   </p>
-  // );
-
   return (
     <>
       <Wrap>
@@ -61,12 +54,8 @@ const Welcome = () => {
                 color="white"
                 style={{ fontSize: "2rem", opacity: 0.5, marginTop: "15%" }}
               />
-              <p style={{ fontFamily: "Varela Round", fontSize: "3rem" }}>
-                Door Unlocked
-              </p>
-              <p style={{ fontSize: "1.5rem", fontFamily: "Varela Round" }}>
-                Come on in.
-              </p>
+              <ModalHeader>Door Unlocked</ModalHeader>
+              <ModalSubHeader>Come on in.</ModalSubHeader>
             </Modal>
           )}
           {ring && (
@@ -77,27 +66,16 @@ const Welcome = () => {
                 color="white"
                 style={{ fontSize: "2rem", opacity: 0.5, marginTop: "15%" }}
               />
-              <p style={{ fontFamily: "Varela Round", fontSize: "3rem" }}>
-                Ding!
-              </p>
-              <p style={{ fontSize: "1.5rem", fontFamily: "Varela Round" }}>
+              <ModalHeader>Ding!</ModalHeader>
+              <ModalSubHeader>
                 The doorbell has rung <br />
                 Someone will be with your shortly.
-              </p>
+              </ModalSubHeader>
             </Modal>
           )}
           <Header>
             Welcome to <br /> MeldCX & AOpen
-            <p
-              style={{
-                fontSize: "1.25rem",
-                color: "black",
-                marginTop: "2rem",
-                marginBottom: "2rem"
-              }}
-            >
-              Here to see someone or drop off a package?
-            </p>
+            <SubHeader>Here to see someone or drop off a package?</SubHeader>
             <Doorbell onClick={() => setRing(true)}>
               <Icon
                 path={mdiBellRingOutline}
@@ -138,6 +116,13 @@ const Header = styled.h1`
   font-size: 3.125rem;
   color: #003c8f;
   padding-top: 12%;
+`;
+
+const SubHeader = styled.div`
+  font-size: 1.25rem;
+  color: black;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const Button = styled.button`
@@ -206,4 +191,27 @@ const Clear = styled(Button)`
     color: #003c8f;
     border-color: white;
   }
+`;
+
+const Modal = styled.div`
+  text-align: center;
+  z-index: 1;
+  border: none;
+  position: fixed;
+  opacity: 0.9;
+  background: #003c8f;
+  height: 150%;
+  width: 100vw;
+  color: white;
+  top: 0;
+  left: 0;
+`;
+
+export const ModalHeader = styled.div`
+  font-size: 3rem;
+  margin-top: 3rem;
+`;
+
+export const ModalSubHeader = styled.div`
+  font-size: 1.5rem;
 `;
