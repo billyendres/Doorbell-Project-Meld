@@ -50,6 +50,7 @@ const Keys = styled.button`
   padding: 0;
   border: 0;
   justify-content: center;
+  background: white;
   :after {
     content: "";
     padding-bottom: 100%;

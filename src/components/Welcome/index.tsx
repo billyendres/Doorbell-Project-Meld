@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Keypad from "../Keypad";
 import styled from "styled-components";
 import Icon from "@mdi/react";
@@ -6,14 +6,22 @@ import { mdiBellRingOutline } from "@mdi/js";
 import PinDisplay from "../PinDisplay";
 import { mdiMusicNoteOutline } from "@mdi/js";
 import { mdiLockOpenOutline } from "@mdi/js";
+import { Context as AgentContext } from "../AgentContext";
+
+import ReactPlayer from "react-player";
+import horn from "../sounds/horn.wav";
 
 const Welcome = () => {
   const [ring, setRing] = useState(false);
   const [code, setCode] = useState("");
   const [codeError, setCodeError] = useState("");
+  const agent = useContext(AgentContext);
+
+  agent.Device.getOptions().then(console.log);
 
   //provides ref to number value from setTimeout function
   const ringTimeout = useRef<number | undefined>(undefined);
+  const validCodes = useRef<string[]>([]);
 
   useEffect(() => {
     if (ring) {
@@ -24,21 +32,27 @@ const Welcome = () => {
     return () => clearTimeout(ringTimeout.current);
   }, [ring]);
 
+  useEffect(() => {
+    (async () => {
+      const options = await agent.Device.getOptions();
+      if (options.codes) {
+        validCodes.current = options.codes.split(",");
+      }
+    })();
+  }, []);
+
   const onChangeCode = (newCode: string) => {
-    if (newCode === "1234") {
-      setCode("1234");
+    setCode(newCode);
+    if (validCodes.current.includes(newCode)) {
       setTimeout(() => {
         setCode("");
       }, 4000);
     } else if (newCode.length >= 4) {
       setCodeError("Invalid code entered. Please try again.");
-      setCode(newCode);
       setTimeout(() => {
         setCodeError("");
         setCode("");
       }, 4000);
-    } else {
-      setCode(newCode);
     }
   };
 
@@ -46,7 +60,7 @@ const Welcome = () => {
     <>
       <Wrap>
         <Content>
-          {code === "1234" && (
+          {validCodes.current.includes(code) && (
             <Modal>
               <Icon
                 path={mdiLockOpenOutline}
@@ -71,6 +85,7 @@ const Welcome = () => {
                 The doorbell has rung <br />
                 Someone will be with your shortly.
               </ModalSubHeader>
+              <ReactPlayer url={horn} playing />
             </Modal>
           )}
           <Header>

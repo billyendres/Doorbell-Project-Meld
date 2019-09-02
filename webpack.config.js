@@ -24,10 +24,11 @@ module.exports = {
       {
         enforce: "pre",
         test: /\.js$/,
+        exclude: /node_modules\/(@meldcx\/agent)/,
         loader: "source-map-loader"
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif|svg|wav)$/i,
         use: [
           {
             loader: "file-loader"

@@ -13,7 +13,9 @@ const PinDisplay: React.FC<Props> = ({ pin, style }) => {
   return (
     <Wrap style={style}>
       {range(4).map(d => (
-        <Digit key={d}>{pin.length > d && <i>*</i>}</Digit>
+        <Digit key={d}>
+          {pin.length > d && <i style={{ fontStyle: "normal" }}>*</i>}
+        </Digit>
       ))}
     </Wrap>
   );

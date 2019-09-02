@@ -1,4 +1,4 @@
-import React from "react";
-import Modal from ".";
+// import React from "react";
+// import Modal from ".";
 
-export default <Modal />;
+// export default <Modal />;

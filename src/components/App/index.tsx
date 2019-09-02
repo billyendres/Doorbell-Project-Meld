@@ -7,7 +7,11 @@ import { ErrorScreen, LoadingScreen } from "../Modal";
 const App = () => {
   return (
     <>
-      <AgentProvider fallback={<ErrorScreen />} loading={<LoadingScreen />}>
+      <AgentProvider
+        fallback={ErrorScreen}
+        loading={LoadingScreen}
+        timeout={5000}
+      >
         <GlobalStyle />
         <Welcome />
       </AgentProvider>
